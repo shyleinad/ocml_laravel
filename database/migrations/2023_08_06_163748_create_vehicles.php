@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id(); //id of the vehicle record
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //user of the vehicle
+            $table->foreignId('fuel_type_id')->constrained(); //fuel type of the vehicle
             $table->string('vin'); //vin of the vehicle
             $table->string('lic_plate'); //licence plate string of the vehicle
             $table->string('make'); //make of the vehicle
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->string('model_code'); //model code of the vehicle
             $table->string('engine_code'); //engine code of the vehicle
             $table->int('engine_displacement'); //engine displacement of the vehicle
-            $table->string('fuel_type'); //fuel type of the vehicle
             $table->string('mot_expires'); //when the mot of the vehicle expires
             $table->timestamps(); //record added timestamp
         });
