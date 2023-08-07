@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('docs', function (Blueprint $table) {
             $table->id(); //id of the doc record
             $table->foreignId('maintenance_id')->constrained()->onDelete('cascade'); //the maintenance which to the doc belongs
-            $table->path('doc_path'); //the path of the document
+            $table->string('doc_path'); //the path of the document
             $table->timestamps(); //record added timestamp
         });
     }

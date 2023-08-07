@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('year_of_make'); //year of make of the car
             $table->string('model_code'); //model code of the vehicle
             $table->string('engine_code'); //engine code of the vehicle
-            $table->int('engine_displacement'); //engine displacement of the vehicle
+            $table->integer('engine_displacement'); //engine displacement of the vehicle
             $table->string('mot_expires'); //when the mot of the vehicle expires
             $table->timestamps(); //record added timestamp
         });
