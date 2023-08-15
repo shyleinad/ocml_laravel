@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date'); //date: when the work was done
             $table->string('work_done'); //what was done (oil change for example)
             $table->string('changed_parts'); //changed parts
+            $table->boolean('public'); //record is public or not
             $table->timestamps(); //record added timestamp
         });
     }
