@@ -23,7 +23,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
