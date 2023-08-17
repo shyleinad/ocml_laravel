@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MaintenanceController;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -104,3 +106,9 @@ Route::post('/reset-password', function (Request $request) {
 })->middleware('guest')->name('password.update');
 
 require __DIR__.'/auth.php';
+
+//Show maintenances view
+Route::get('/maintenances', [MaintenanceController::class, 'show'])->name('maintenances');
+
+//Show vehicles view
+Route::get('/vehicles', [VehicleController::class, 'show'])->name('vehicles');

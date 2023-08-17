@@ -16,6 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('maintenances')" :active="request()->routeIs('maintenances')">
+                        {{ __('Szervízbejegyzések') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('vehicles')" :active="request()->routeIs('vehicles')">
+                        {{ __('Járműveim') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
