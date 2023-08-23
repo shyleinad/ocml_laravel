@@ -108,7 +108,7 @@ Route::post('/reset-password', function (Request $request) {
 require __DIR__.'/auth.php';
 
 //Show maintenances view
-Route::get('/maintenances', [MaintenanceController::class, 'show'])->name('maintenances');
+Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])->name('maintenances');
 
 //Show vehicles view
-Route::get('/vehicles', [VehicleController::class, 'show'])->name('vehicles');
+Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->name('vehicles');
