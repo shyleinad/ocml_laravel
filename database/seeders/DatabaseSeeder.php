@@ -18,5 +18,37 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        //fuel types seeding
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Benzin'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Dízel'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Elektromos'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Hibrid (Benzin)'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Hibrid (Dízel)'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Benzin/gáz'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Dízel/gáz'
+        ]);
+        \App\Models\Fuel_type::factory()->create([
+            'fuel_type'=>'Hidrogén'
+        ]);
+
+        //vehicles seeding
+        \App\Models\Vehicle::factory(10)->create();
+
+        //maintenances seeding
+        \App\Models\Maintenance::factory(10)->create();
     }
 }
