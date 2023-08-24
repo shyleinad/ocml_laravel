@@ -112,3 +112,6 @@ Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])-
 
 //Show vehicles view
 Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->name('vehicles');
+
+//Show vehicle edit view
+Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit']);

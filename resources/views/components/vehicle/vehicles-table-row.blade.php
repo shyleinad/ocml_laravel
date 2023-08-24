@@ -8,6 +8,6 @@
     <td class="px-4 py-4">{{$vehicle->vin}}</td>
     <td class="px-4 py-4">{{$vehicle->engine_code}}</td>
     <td class="px-4 py-4">{{$vehicle->mot_expires}}</td>
-    <td class="px-0 py-4"><x-primary-button>Módosítás</x-primary-button></td>
+    <td class="px-0 py-4"><a href="/edit-vehicle-form/{{$vehicle->id}}"><x-primary-button>Módosítás</x-primary-button></a></td>
     <td class="px-0 py-4"><x-danger-button>Törlés</x-danger-button></td>
 </tr>

@@ -13,4 +13,11 @@ class VehicleController extends Controller
             'vehicles'=>Vehicle::latest()->paginate(25)
         ]);
     }
+
+    //show vehicle edit form
+    public function showVehicleEdit(Vehicle $vehicle){
+        return view('vehicle.edit', [
+            'vehicle'=>$vehicle
+        ]);
+    }
 }
