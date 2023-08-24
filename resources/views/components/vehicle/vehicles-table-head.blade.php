@@ -8,7 +8,7 @@
         <th scope="col" class="px-4 py-3">Alvázszám</th>
         <th scope="col" class="px-4 py-3">Motor kód</th>
         <th scope="col" class="px-4 py-3">Műszaki érvényes</th>
-        <th scope="col" class="px-0 py-3"></th>
-        <th scope="col" class="px-0 py-3"></th>
+        <th scope="col" class="px-0 py-3"></th> {{--for edit button--}}
+        <th scope="col" class="px-0 py-3"></th> {{--for delete button--}}
     </tr>
 </thead>
