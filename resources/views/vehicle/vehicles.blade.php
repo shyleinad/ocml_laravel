@@ -6,11 +6,17 @@
     </x-slot>
 
     <div class="py-12">
-            @if (count($vehicles)<=0)
-            @else
-                @foreach ($vehicles as $vehicle)
-                    
-                @endforeach
-            @endif
+        @if (count($vehicles) <= 0)
+        {{ __('Nincsenek járművek!') }}
+        @else
+            <x-table>
+                <x-vehicle.vehicles-table-head/>
+                <x-table-body>
+                    @foreach ($vehicles as $vehicle)
+                        <x-vehicle.vehicles-table-row :vehicle="$vehicle"/>
+                    @endforeach
+                </x-table-body>
+            </x-table>
+        @endif
     </div>
 </x-app-layout>
