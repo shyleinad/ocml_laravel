@@ -1,5 +1,5 @@
 @props(['vehicle'])
-<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+<tr class="even:bg-gray-50 odd:bg-white border-b dark:bg-gray-900 dark:border-gray-700">
     <th scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$vehicle->lic_plate}}</th>
     <td class="px-4 py-4">{{$vehicle->make." ".$vehicle->type}}</td>
     <td class="px-4 py-4">{{$vehicle->year_of_make}}</td>
