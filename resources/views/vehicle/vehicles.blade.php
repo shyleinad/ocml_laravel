@@ -7,7 +7,9 @@
 
     <div class="py-12">
         @if (count($vehicles) <= 0)
-        {{ __('Nincsenek járművek!') }}
+            <x-card>
+                {{ __('Nincsenek járművek!') }}
+            </x-card>
         @else
             <x-table>
                 <x-vehicle.vehicles-table-head/>
