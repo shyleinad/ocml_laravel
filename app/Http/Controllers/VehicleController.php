@@ -14,6 +14,16 @@ class VehicleController extends Controller
         ]);
     }
 
+    //show vehicle add form
+    public function showVehicleAdd(){
+        return view('vehicle.add');
+    }
+
+    //insert vehicle
+    public function insertVehicle(Request $request){
+        
+    }
+
     //show vehicle edit form
     public function showVehicleEdit(Vehicle $vehicle){
         return view('vehicle.edit', [

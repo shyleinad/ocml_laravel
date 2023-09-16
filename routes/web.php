@@ -113,8 +113,14 @@ Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])-
 //Show vehicles view
 Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->name('vehicles');
 
+//Show vehicle add view
+Route::get('/add-vehicle-form', [VehicleController::class, 'showVehicleAdd']);
+
 //Show vehicle edit view
 Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit']);
+
+//Insert vehicle
+Route::post('/insert-vehicle/{vehicle}', [VehicleController::class, 'insertVehicle']);
 
 //Update vehicle
 Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle']);
