@@ -115,3 +115,6 @@ Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->name('vehic
 
 //Show vehicle edit view
 Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit']);
+
+//Update vehicle
+Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle']);

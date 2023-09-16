@@ -20,4 +20,31 @@ class VehicleController extends Controller
             'vehicle'=>$vehicle
         ]);
     }
+
+    public function updateVehicle(Request $request, Vehicle $vehicle){
+        //protection
+        if($vehicle->user_id!=auth()->id()){
+            abort(403, 'Nincs joga ehhez a művelethez!');
+        }
+
+        //validate
+        $formFields=$request->validate([
+            'vin'=>'required',
+            'lic_plate'=>'required',
+            'make'=>'required',
+            'type'=>'required',
+            'year_of_make'=>'required',
+            'model_code'=>'required',
+            'engine_code'=>'required',
+            'engine_displacement'=>'required',
+            'mot_expires'=>'required',
+            
+        ]);
+
+        //update
+        $vehicle->update($formFields);
+
+        //redirect
+        return back()->with('message', 'Jármű sikeresen módosítva!');
+    }
 }
