@@ -21,6 +21,7 @@ class VehicleController extends Controller
         ]);
     }
 
+    //update vehicle
     public function updateVehicle(Request $request, Vehicle $vehicle){
         //protection
         if($vehicle->user_id!=auth()->id()){
@@ -45,6 +46,17 @@ class VehicleController extends Controller
         $vehicle->update($formFields);
 
         //redirect
+        return back()->with('message', 'Jármű sikeresen módosítva!');
+    }
+
+    //delete vehicle
+    public function deleteVehicle(Vehicle $vehicle){
+        //protection
+        if($vehicle->user_id!=auth()->id()){
+            abort(403, 'Nincs joga ehhez a művelethez!');
+        }
+
+        $vehicle->delete();
         return back()->with('message', 'Jármű sikeresen módosítva!');
     }
 }

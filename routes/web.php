@@ -118,3 +118,6 @@ Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehic
 
 //Update vehicle
 Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle']);
+
+//Delete vehicle
+Route::delete('/delete-vehicle/{vehicle}', [VehicleController::class, 'deleteVehicle']);
