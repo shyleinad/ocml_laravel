@@ -21,4 +21,7 @@
             </x-table>
         @endif
     </div>
+
+    {{--Delete confirmation--}}
+    
 </x-app-layout>

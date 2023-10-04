@@ -10,10 +10,11 @@
     <td class="px-4 py-4">{{$vehicle->mot_expires}}</td>
     <td class="px-0 py-4"><a href="/edit-vehicle-form/{{$vehicle->id}}"><x-primary-button>Módosítás</x-primary-button></a></td>
     <td class="px-0 py-4">
+        
         <form method="POST" action="/delete-vehicle/{{$vehicle->id}}">
             @csrf
             @method('DELETE')
-            <x-danger-button>Törlés</x-danger-button>
+            <x-danger-button onclick="return confirm('Biztosan törölni szeretné a {{$vehicle->make}} {{$vehicle->type}} ({{$vehicle->vin}}) járművet?')">Törlés</x-danger-button>
         </form>
     </td>
 </tr>
