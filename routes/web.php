@@ -120,7 +120,7 @@ Route::get('/add-vehicle-form', [VehicleController::class, 'showVehicleAdd'])->m
 Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit'])->middleware(['auth', 'verified']);
 
 //Insert vehicle
-Route::post('/insert-vehicle/{vehicle}', [VehicleController::class, 'insertVehicle'])->middleware(['auth', 'verified']);
+Route::post('/insert-vehicle', [VehicleController::class, 'insertVehicle'])->middleware(['auth', 'verified']);
 
 //Update vehicle
 Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle'])->middleware(['auth', 'verified']);
