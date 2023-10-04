@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('A fiók törlését követően az összes rendszerünkben tárolt adata véglegesen törlődik.') }}
+            {{ __('A fiók törlését követően a rendszerünkben tárolt összes adata véglegesen törlődik.') }}
         </p>
     </header>
 
@@ -24,7 +24,7 @@
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('A fiók törlését követően az összes rendszerünkben tárolt adata véglegesen törlődik. Adja meg jelszavát, ha mindenképp törölni szeretné véglegesen a profilját.') }}
+                {{ __('A fiók törlését követően a rendszerünkben tárolt összes adata véglegesen törlődik. Adja meg jelszavát, ha mindenképp törölni szeretné véglegesen a profilját.') }}
             </p>
 
             <div class="mt-6">
