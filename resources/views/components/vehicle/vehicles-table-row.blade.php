@@ -10,7 +10,6 @@
     <td class="px-4 py-4">{{$vehicle->mot_expires}}</td>
     <td class="px-0 py-4"><a href="/edit-vehicle-form/{{$vehicle->id}}"><x-primary-button>Módosítás</x-primary-button></a></td>
     <td class="px-0 py-4">
-        
         <form method="POST" action="/delete-vehicle/{{$vehicle->id}}">
             @csrf
             @method('DELETE')
