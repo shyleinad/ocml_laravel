@@ -108,22 +108,22 @@ Route::post('/reset-password', function (Request $request) {
 require __DIR__.'/auth.php';
 
 //Show maintenances view
-Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])->name('maintenances');
+Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])->middleware(['auth', 'verified'])->name('maintenances');
 
 //Show vehicles view
-Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->name('vehicles');
+Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->middleware(['auth', 'verified'])->name('vehicles');
 
 //Show vehicle add view
-Route::get('/add-vehicle-form', [VehicleController::class, 'showVehicleAdd']);
+Route::get('/add-vehicle-form', [VehicleController::class, 'showVehicleAdd'])->middleware(['auth', 'verified']);
 
 //Show vehicle edit view
-Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit']);
+Route::get('/edit-vehicle-form/{vehicle}', [VehicleController::class, 'showVehicleEdit'])->middleware(['auth', 'verified']);
 
 //Insert vehicle
-Route::post('/insert-vehicle/{vehicle}', [VehicleController::class, 'insertVehicle']);
+Route::post('/insert-vehicle/{vehicle}', [VehicleController::class, 'insertVehicle'])->middleware(['auth', 'verified']);
 
 //Update vehicle
-Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle']);
+Route::put('/edit-vehicle/{vehicle}', [VehicleController::class, 'updateVehicle'])->middleware(['auth', 'verified']);
 
 //Delete vehicle
-Route::delete('/delete-vehicle/{vehicle}', [VehicleController::class, 'deleteVehicle']);
+Route::delete('/delete-vehicle/{vehicle}', [VehicleController::class, 'deleteVehicle'])->middleware(['auth', 'verified']);
