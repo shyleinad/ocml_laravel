@@ -1,9 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <x-header.header>
+        <x-header.header-text>
             {{ __('Járműveim') }}
-        </h2>
-    </x-slot>
+        </x-header.header-text>
+        <x-header.add-button :href="__('/add-vehicle-form')">Új jármű hozzáadása</x-add-button>
+    </x-header.header>
 
     <div class="py-12">
         @if (count($vehicles) <= 0)
@@ -21,7 +22,4 @@
             </x-table>
         @endif
     </div>
-
-    {{--Delete confirmation--}}
-    
 </x-app-layout>

@@ -1,9 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <x-header.header>
+        <x-header.header-text>
             {{ __('Jármű módosítása') }}
-        </h2>
-    </x-slot>
+        </x-header.header-text>
+    </x-header.header>
 
     <div class="py-12">
         <x-card>
