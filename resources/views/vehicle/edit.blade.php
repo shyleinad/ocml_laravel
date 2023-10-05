@@ -10,10 +10,11 @@
             <form method="POST" action="/edit-vehicle/{{$vehicle->id}}">
                 @csrf
                 @method('put')
+                @include('vehicle.partials.form-fields')
                 <!-- vin -->
-                <div>
+                {{--<div>
                     <x-input-label for="vin" :value="__('Alvázszám')" />
-                    <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" value="{{$vehicle->vin}}" required autofocus autocomplete="vin" />
+                    <x-text-input id="vin" class="block mt-1 w-full" type="text" name="vin" required autofocus autocomplete="vin" value="{{$vehicle->vin}}"/>
                     <x-input-error :messages="$errors->get('vin')" class="mt-2" />
                 </div>
 
@@ -135,6 +136,7 @@
                         {{ __('Módosít') }}
                     </x-primary-button>
                 </div>
+                --}}
             </form>
         </x-card>
     </div>
