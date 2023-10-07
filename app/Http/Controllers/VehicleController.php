@@ -12,9 +12,15 @@ class VehicleController extends Controller
 
     //show vehicles view
     public function showVehicles(){
+        //show only vehicles that belongs to current logged in user
         return view('vehicle.vehicles', [
-            'vehicles'=>Vehicle::latest()->paginate(25)
+            'vehicles'=>request()->user()->vehicles()->paginate(25)
         ]);
+
+        //showing all result
+        /*return view('vehicle.vehicles', [
+            'vehicles'=>Vehicle::latest()->paginate(25)
+        ]);*/ 
     }
 
     //show vehicle add form
@@ -55,7 +61,7 @@ class VehicleController extends Controller
 
     //show vehicle edit form
     public function showVehicleEdit(Vehicle $vehicle){
-        $is_add=false; //so we know we would like to edit and not edit
+        $is_add=false; //so we know we would like to edit and not add
         return view('vehicle.edit', [
             'is_add'=>$is_add,
             'vehicle'=>$vehicle,
