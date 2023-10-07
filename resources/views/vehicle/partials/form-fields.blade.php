@@ -83,8 +83,8 @@
 
 <!-- fuel_type -->
 <div class="mt-4">
-    <x-input-label for="fuel_type" :value="__('Üzemanyag')" />
-    <x-select-input id="fuel_type" class="block mt-1 w-full" name="fuel_type" required autocomplete="fuel_type">
+    <x-input-label for="fuel_type_id" :value="__('Üzemanyag')" />
+    <x-select-input id="fuel_type_id" class="block mt-1 w-full" name="fuel_type_id" required>
         @foreach($fuel_types as $fuel_type)
             @if(!$is_add && $fuel_type->id==$vehicle->fuel_type_id)
                 <option value="{{$fuel_type->id}}" selected>{{$fuel_type->fuel_type}}</option>
