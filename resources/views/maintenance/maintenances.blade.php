@@ -1,13 +1,22 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <x-header.header>
+        <x-header.header-text>
             {{ __('Szervizbejegyzések') }}
-        </h2>
-    </x-slot>
+        </x-header.header-text>
+        <x-header.add-button :href="__('/add-maintenance-form')">Új szervízbejegyzés</x-header.add-button>
+    </x-header.header>
 
     <div class="py-12">
-        <x-card>
-            {{ __('Nincsenek szervízbejegyzések!') }}
-        </x-card>
+        @if (count($maintenances) <= 0)
+            <x-card>
+                {{ __('Nincsenek szervízbejegyzések!') }}
+            </x-card>
+        @else
+            @foreach ($maintenances as $maintenance)
+                <x-card>
+                    {{$maintenance->id}}
+                </x-card>
+            @endforeach
+        @endif
     </div>
 </x-app-layout>

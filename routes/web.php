@@ -110,6 +110,9 @@ require __DIR__.'/auth.php';
 //Show maintenances view
 Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])->middleware(['auth', 'verified'])->name('maintenances');
 
+//Show maintenance add view
+Route::get('/add-maintenance-form', [MaintenanceController::class, 'showMaintenanceAdd'])->middleware(['auth', 'verified']);
+
 //Show vehicles view
 Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->middleware(['auth', 'verified'])->name('vehicles');
 
