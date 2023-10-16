@@ -17,7 +17,7 @@ class VehicleController extends Controller
             'vehicles'=>request()->user()->vehicles()->paginate(25)
         ]);
 
-        //showing all result
+        //showing all result (for debugging purposes or something)
         /*return view('vehicle.vehicles', [
             'vehicles'=>Vehicle::latest()->paginate(25)
         ]);*/ 
