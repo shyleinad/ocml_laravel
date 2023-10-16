@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->id(); //id of the maintenance record
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //user of the maintenance record
+            //$table->foreignId('user_id')->constrained()->onDelete('cascade'); //user of the maintenance record
             $table->foreignId('vehicle_id')->constrained()->onDelete('cascade'); //vehicle of the maintenance record
             $table->integer('mileage'); //milage: when the work was done
             $table->date('date'); //date: when the work was done
             $table->string('work_done'); //what was done (oil change for example)
             $table->string('changed_parts'); //changed parts
             $table->decimal('price');
-            $table->boolean('public')->default(false); //record is public or not
+            //$table->boolean('public')->default(false); //record is public or not
             $table->timestamps(); //record added timestamp
         });
     }

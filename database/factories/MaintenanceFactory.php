@@ -17,7 +17,7 @@ class MaintenanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'=>1,
+            //'user_id'=>1,
             'vehicle_id'=>rand(1, 10),
             'mileage'=>123456,
             'date'=>fake()->date(), //now()->toDate(),
