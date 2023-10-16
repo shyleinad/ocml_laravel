@@ -30,4 +30,9 @@ class Vehicle extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    //relationship to maintenance
+    public function maintenances(){
+        return $this->hasMany(Maintenance::class, 'vehicle_id');
+    }
 }
