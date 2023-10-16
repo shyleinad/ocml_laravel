@@ -47,6 +47,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //relationship to vehicle
     public function vehicles(){
-        return $this->hasMany(Vehicle::class, "user_id");
+        return $this->hasMany(Vehicle::class, 'user_id');
+    }
+
+    //maintenances of vehicles of the current loggedin user
+    public function maintenances(){
+        return $this->hasManyThrough(Maintenance::class, Vehicle::class, 'user_id', 'vehicle_id');
     }
 }
