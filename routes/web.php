@@ -113,6 +113,9 @@ Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])-
 //Show maintenance add view
 Route::get('/add-maintenance-form', [MaintenanceController::class, 'showMaintenanceAdd'])->middleware(['auth', 'verified']);
 
+//Insert maintenance
+Route::post('/insert-maintenance', [MaintenanceController::class, 'insertMaintenance'])->middleware(['auth', 'verified']);
+
 //Show vehicles view
 Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->middleware(['auth', 'verified'])->name('vehicles');
 

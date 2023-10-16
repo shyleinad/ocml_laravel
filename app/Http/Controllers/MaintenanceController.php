@@ -44,13 +44,11 @@ class MaintenanceController extends Controller
             'price'=>'required',
         ]);
 
-        //add user_id
-        $formFields['user_id']=auth()->id();
-
         //insert
-        Maintenance::create($formFields);
+        $debug=Maintenance::create($formFields);
+        dd($debug);
 
         //redirect
-        return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
+        //return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
     }
 }

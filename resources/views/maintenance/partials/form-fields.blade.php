@@ -1,12 +1,12 @@
 <!-- vehicle -->
 <div class="mt-4">
-    <x-input-label for="vehicle_id" :value="__('Üzemanyag')" />
+    <x-input-label for="vehicle_id" :value="__('Jármű')" />
     <x-select-input id="vehicle_id" class="block mt-1 w-full" name="vehicle_id" required>
         @foreach($vehicles as $vehicle)
             @if(!$is_add && $vehicle->id==$maintenance->vehicle_id)
-                <option value="{{$vehicle->id}}" selected>{{$vehicle->make}}</option> <!--needs to be extended-->
+                <option value="{{$vehicle->id}}" selected>{{ $vehicle->make.' '.$vehicle->type.' ('.$vehicle->lic_plate.')' }}</option> <!--needs to be extended-->
             @else
-                <option value="{{$vehicle->id}}">{{$vehicle->make}}</option>
+                <option value="{{$vehicle->id}}">{{ $vehicle->make.' '.$vehicle->type.' ('.$vehicle->lic_plate.')' }}</option>
             @endif
         @endforeach
     </x-select-input>
