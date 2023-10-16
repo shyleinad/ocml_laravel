@@ -12,9 +12,15 @@ class MaintenanceController extends Controller
 
     //show maintenances view
     public function showMaintenances(){
+        //show only maintenances that belongs to vehicles of the curent loggedin user
         return view('maintenance.maintenances', [
-            'maintenances'=>Maintenance::latest()->paginate(25)
+            'maintenances'=>request()->user()->maintenances()->get()
         ]);
+
+        //showing all result (for debugging purposes or something)
+        /*return view('maintenance.maintenances', [
+            'maintenances'=>Maintenance::latest()->paginate(25)
+        ]);*/
     }
 
     //show maintenance add form
@@ -22,7 +28,29 @@ class MaintenanceController extends Controller
         $is_add=true; //so we know we would like to add and not edit
         return view('maintenance.add', [
             'is_add'=>$is_add,
-            'vehicles'=>Vehicle::all()
+            'vehicles'=>request()->user()->vehicles()->get()
         ]);
+    }
+
+    //insert maintenance
+    public function insertMaintenance(Request $request){
+        //validate
+        $formFields=$request->validate([
+            'vehicle_id'=>'required',
+            'mileage'=>'required',
+            'date'=>'required',
+            'work_done'=>'required',
+            'changed_part'=>'required',
+            'price'=>'required',
+        ]);
+
+        //add user_id
+        $formFields['user_id']=auth()->id();
+
+        //insert
+        Maintenance::create($formFields);
+
+        //redirect
+        return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
     }
 }
