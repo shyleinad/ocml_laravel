@@ -35,20 +35,20 @@ class MaintenanceController extends Controller
     //insert maintenance
     public function insertMaintenance(Request $request){
         //validate
+        //dd($request);
         $formFields=$request->validate([
             'vehicle_id'=>'required',
             'mileage'=>'required',
             'date'=>'required',
             'work_done'=>'required',
-            'changed_part'=>'required',
+            'changed_parts'=>'required',
             'price'=>'required',
         ]);
 
         //insert
-        $debug=Maintenance::create($formFields);
-        dd($debug);
+        Maintenance::create($formFields);
 
         //redirect
-        //return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
+        return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
     }
 }
