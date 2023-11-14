@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <x-card>
-            <form method="POST" action="/insert-maintenance">
+            <form method="POST" action="/insert-maintenance" enctype="multipart/form-data">
                 @csrf
                 @include('maintenance.partials.form-fields')
             </form>

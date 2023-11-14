@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doc;
 use App\Models\Vehicle;
 use App\Models\Maintenance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MaintenanceController extends Controller
 {
@@ -34,20 +36,38 @@ class MaintenanceController extends Controller
 
     //insert maintenance
     public function insertMaintenance(Request $request){
-        //validate
-        //dd($request);
-        $formFields=$request->validate([
-            'vehicle_id'=>'required',
-            'mileage'=>'required',
-            'date'=>'required',
-            'work_done'=>'required',
-            'changed_parts'=>'required',
-            'price'=>'required',
-        ]);
 
-        //insert
-        Maintenance::create($formFields);
+        DB::transaction(function() use($request) {
+            //validate maintenance form fields
+            $formFieldsMaintenance=$request->validate([
+                'vehicle_id'=>'required',
+                'mileage'=>['required', 'integer'],
+                'date'=>'required',
+                'work_done'=>'required',
+                'changed_parts'=>'required',
+                'price'=>['required', 'numeric'],
+            ]);
 
+            //validate docs form fields
+            $formFieldsDoc=$request->validate([
+            //'docs'=>'required',
+                'docs.*'=>'mimes:pdf,jpg,jpeg|max:20480'
+            ]);
+
+            //insert maintenance
+            $formFieldsDoc['maintenance_id']=Maintenance::create($formFieldsMaintenance)->id;
+
+            //store docs and insert docs
+            $docs=$request->file('docs'); //getting selected files
+            if($request->hasFile('docs')){ //if it has something in it
+                foreach($docs as $doc){ //loop through the files
+                    $formFieldsDoc['doc_path']=$doc->store('docs', 'public'); //store the file and get the path
+                    Doc::create($formFieldsDoc); //inserting the file
+                    //dd($formFieldDoc['doc_path']);
+                }
+            }
+        });
+        
         //redirect
         return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
     }

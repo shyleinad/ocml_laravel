@@ -80,6 +80,20 @@
     <x-input-error :messages="$errors->get('price')" class="mt-2" />
 </div>
 
+<!-- docs -->
+<div class="mt-4">
+    <x-input-label for="docs" :value="__('Dokumentumok')" />
+
+    <x-file-input id="docs" class="block mt-1 w-full"
+                    type="file"
+                    name="docs[]"
+                    autocomplete="docs" 
+                    multiple
+    />
+
+    <x-input-error :messages="$errors->get('docs.*')" class="mt-2" />
+</div>
+
 <!-- submit -->
 <div class="flex items-center justify-end mt-4">
     @if(!$is_add)
