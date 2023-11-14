@@ -23,4 +23,9 @@ class Maintenance extends Model
     public function vehicle(){
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
+
+    //relationship to docs
+    public function docs(){
+        return $this->hasMany(Doc::class, 'maintenance_id');
+    }
 }

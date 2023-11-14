@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Doc extends Model
 {
     use HasFactory;
+
+    protected $fillable = 
+    [
+        'maintenance_id',
+        'doc_path'
+    ];
+
+    //relationship to maintenance
+    public function maintenance(){
+        return $this->belongsTo(Maintenance::class, 'maintenance_id');
+    }
 }
