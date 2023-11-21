@@ -86,11 +86,24 @@
     <x-input-label for="fuel_type_id" :value="__('Üzemanyag')" />
     <x-select-input id="fuel_type_id" class="block mt-1 w-full" name="fuel_type_id" required>
         @foreach($fuel_types as $fuel_type)
-            @if(!$is_add && $fuel_type->id==$vehicle->fuel_type_id)
-                <option value="{{$fuel_type->id}}" selected>{{$fuel_type->fuel_type}}</option>
-            @else
-                <option value="{{$fuel_type->id}}">{{$fuel_type->fuel_type}}</option>
+
+            {{--in case of we are updating and not adding (in this case we have $vehicles undefined)--}}
+            @if(!$is_add) 
+
+                {{--if we dont have old data, then existing data is selected--}}
+                @if (!old()) 
+                    <option value="{{$fuel_type->id}}" {{ ($fuel_type->id==$vehicle->fuel_type_id) ? "selected" : ""}}>{{$fuel_type->fuel_type}}</option>
+
+                {{--in case we are having old data, then old should be selected--}}
+                @else 
+                    <option value="{{$fuel_type->id}}" {{ ($fuel_type->id==old("fuel_type_id")) ? "selected" : ""}}>{{$fuel_type->fuel_type}}</option>
+                @endif
+            
+            {{--in case of we are adding and not updating, then old data is selected--}}
+            @else 
+                <option value="{{$fuel_type->id}}" {{ ($fuel_type->id==old("fuel_type_id")) ? "selected" : ""}}>{{$fuel_type->fuel_type}}</option>
             @endif
+
         @endforeach
     </x-select-input>
     <x-input-error :messages="$errors->get('fuel_type_id')" class="mt-2" />
