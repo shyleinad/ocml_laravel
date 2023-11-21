@@ -145,8 +145,7 @@
                     type="checkbox"
                     name="public"
                     autocomplete="public" 
-                    @if
-                    (
+                    @if(
                         (old('public') == 'on')
                         ||
                         (!old() && $vehicle->public==1)
