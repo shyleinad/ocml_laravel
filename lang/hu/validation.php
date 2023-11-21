@@ -51,7 +51,7 @@ return [
     'email' => 'A(z) :attribute mezőben érvényes email címnek kell szerepelnie.',
     'ends_with' => 'The :attribute field must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
-    'exists' => 'The selected :attribute is invalid.',
+    'exists' => 'A kiválasztott :attribute helytelen.',
     'file' => 'The :attribute field must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
