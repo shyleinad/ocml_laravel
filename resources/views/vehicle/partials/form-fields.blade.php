@@ -118,7 +118,7 @@
                     type="text"
                     name="engine_displacement"
                     required autocomplete="engine_displacement" 
-                    value="{{(!$is_add) ? old('engine_displacement', $vehicle->engine_diplsacement) : old('engine_displacement')}}"
+                    value="{{(!$is_add) ? old('engine_displacement', $vehicle->engine_displacement) : old('engine_displacement')}}"
     />
 
     <x-input-error :messages="$errors->get('engine_displacement')" class="mt-2" />
@@ -141,12 +141,16 @@
 <!-- public -->
 <div class="mt-4">
     <x-input-label for="public" :value="__('Járműhöz tartozó szervízbejegyzések publikusak?')" />
-
     <input id="public" class="block mt-1 w-full"
                     type="checkbox"
                     name="public"
                     autocomplete="public" 
-                    @if(!$is_add && $vehicle->public==1)
+                    @if
+                    (
+                        (old('public') == 'on')
+                        ||
+                        (!old() && $vehicle->public==1)
+                    )
                         checked
                     @endif
     />
