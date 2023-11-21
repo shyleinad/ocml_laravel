@@ -35,7 +35,7 @@ return [
     'can' => 'The :attribute field contains an unauthorized value.',
     'confirmed' => 'A(z) :attribute mező értéke nem egyezik.',
     'current_password' => 'A jelszó helytelen.',
-    'date' => 'A :attribute mezőnek érvényes dátumnak kell lennie.',
+    'date' => 'A(z) :attribute mezőnek érvényes dátumnak kell lennie.',
     'date_equals' => 'The :attribute field must be a date equal to :date.',
     'date_format' => 'The :attribute field must match the format :format.',
     'decimal' => 'The :attribute field must have :decimal decimal places.',
