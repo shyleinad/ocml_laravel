@@ -20,7 +20,7 @@
                     type="text" 
                     name="mileage" 
                     required autofocus autocomplete="mileage" 
-                    value="{{(!$is_add)?$maintenance->mileage:''}}"
+                    value="{{(!$is_add) ? old('mileage', $maintenance->mileage) : old('mileage')}}"
     >
     </x-text-input>
     <x-input-error :messages="$errors->get('mileage')" class="mt-2" />
@@ -34,7 +34,7 @@
                     type="date"
                     name="date"
                     required autocomplete="date" 
-                    value="{{(!$is_add)?$maintenance->date:''}}"
+                    value="{{(!$is_add) ? old('date', $maintenance->date) : old('date')}}"
     />
 
     <x-input-error :messages="$errors->get('date')" class="mt-2" />
@@ -47,7 +47,7 @@
                     type="text" 
                     name="work_done" 
                     required autocomplete="work_done" 
-                    value="{{(!$is_add)?$maintenance->work_done:''}}"
+                    value="{{(!$is_add) ? old('work_done', $maintenance->work_done) : old('work_done')}}"
     />
     <x-input-error :messages="$errors->get('work_done')" class="mt-2" />
 </div>
@@ -60,7 +60,7 @@
                     type="text"
                     name="changed_parts"
                     required autocomplete="changed_parts" 
-                    value="{{(!$is_add)?$maintenance->changed_parts:''}}"
+                    value="{{(!$is_add) ? old('chaged_parts', $maintenance->changed_parts) : old('changed_parts')}}"
     />
 
     <x-input-error :messages="$errors->get('changed_parts')" class="mt-2" />
@@ -74,7 +74,7 @@
                     type="text"
                     name="price"
                     required autocomplete="price" 
-                    value="{{(!$is_add)?$maintenance->price:''}}"
+                    value="{{(!$is_add) ? old('price', $maintenance->price) : old('price')}}"
     />
 
     <x-input-error :messages="$errors->get('price')" class="mt-2" />
