@@ -145,12 +145,10 @@
                     type="checkbox"
                     name="public"
                     autocomplete="public" 
-                    @if(
-                        (old('public') == 'on')
-                        ||
-                        (!old() && $vehicle->public==1)
-                    )
-                        checked
+                    @if(!$is_add)
+                        {{ (old('public') == 'on') || (!old() && $vehicle->public==1) ? 'checked' : ''}}
+                    @else
+                        {{ old('public') == 'on' ? 'checked' : ''}}
                     @endif
     />
 
