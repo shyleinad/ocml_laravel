@@ -36,16 +36,16 @@ class VehicleController extends Controller
     public function insertVehicle(Request $request){
         //validate
         $formFields=$request->validate([
-            'fuel_type_id' => 'required',
-            'vin'=>'required',
-            'lic_plate'=>'required',
-            'make'=>'required',
-            'type'=>'required',
-            'year_of_make'=>'required',
-            'model_code'=>'required',
-            'engine_code'=>'required',
-            'engine_displacement'=>'required',
-            'mot_expires'=>'required',
+            'fuel_type_id' => 'required|exists:App\Models\Fuel_type,id',
+            'vin'=>'required|string|min:17|max:17',
+            'lic_plate'=>'required|min:6|max:16',
+            'make'=>'required|string|max:64',
+            'type'=>'required|string|max:64',
+            'year_of_make'=>'required|integer',
+            'model_code'=>'required|string|max:4',
+            'engine_code'=>'required|string|max:32',
+            'engine_displacement'=>'required|integer|max:9999',
+            'mot_expires'=>'required|date'
         ]);
 
         //add user_id
@@ -78,15 +78,16 @@ class VehicleController extends Controller
 
         //validate
         $formFields=$request->validate([
-            'vin'=>'required',
-            'lic_plate'=>'required',
-            'make'=>'required',
-            'type'=>'required',
-            'year_of_make'=>'required',
-            'model_code'=>'required',
-            'engine_code'=>'required',
-            'engine_displacement'=>'required',
-            'mot_expires'=>'required',
+            'fuel_type_id' => 'required|exists:App\Models\Fuel_type,id',
+            'vin'=>'required|string|min:17|max:17',
+            'lic_plate'=>'required|min:6|max:16',
+            'make'=>'required|string|max:64',
+            'type'=>'required|string|max:64',
+            'year_of_make'=>'required|integer',
+            'model_code'=>'required|string|max:4',
+            'engine_code'=>'required|string|max:32',
+            'engine_displacement'=>'required|integer|max:9999',
+            'mot_expires'=>'required|date'
         ]);
 
         //update
