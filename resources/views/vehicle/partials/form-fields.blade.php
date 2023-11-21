@@ -5,7 +5,7 @@
                     type="text" 
                     name="vin" 
                     required autofocus autocomplete="vin" 
-                    value="{{(!$is_add)?$vehicle->vin:''}}"
+                    value="{{(!$is_add) ? old('vin', $vehicle->vin) : old('vin')}}"
     >
     </x-text-input>
     <x-input-error :messages="$errors->get('vin')" class="mt-2" />
@@ -18,7 +18,7 @@
                     type="text" 
                     name="lic_plate" 
                     required autocomplete="lic_plate" 
-                    value="{{(!$is_add)?$vehicle->lic_plate:''}}"
+                    value="{{(!$is_add) ? old('lic_plate', $vehicle->lic_plate) : old('lic_plate')}}"
     />
     <x-input-error :messages="$errors->get('lic_plate')" class="mt-2" />
 </div>
@@ -31,7 +31,7 @@
                     type="text"
                     name="make"
                     required autocomplete="make" 
-                    value="{{(!$is_add)?$vehicle->make:''}}"
+                    value="{{(!$is_add) ? old('make', $vehicle->make) : old('make')}}"
     />
 
     <x-input-error :messages="$errors->get('make')" class="mt-2" />
@@ -45,7 +45,7 @@
                     type="text"
                     name="type"
                     required autocomplete="type" 
-                    value="{{(!$is_add)?$vehicle->type:''}}"
+                    value="{{(!$is_add) ? old('type', $vehicle->type) : old('type')}}"
     />
 
     <x-input-error :messages="$errors->get('type')" class="mt-2" />
@@ -60,7 +60,7 @@
                     name="year_of_make"
                     value=""
                     required autocomplete="year_of_make" 
-                    value="{{(!$is_add)?$vehicle->year_of_make:''}}"
+                    value="{{(!$is_add) ? old('year_of_make', $vehicle->year_of_make) : old('year_of_make')}}"
     />
 
     <x-input-error :messages="$errors->get('year_of_make')" class="mt-2" />
@@ -75,7 +75,7 @@
                     name="model_code"
                     value=""
                     required autocomplete="model_code" 
-                    value="{{(!$is_add)?$vehicle->model_code:''}}"
+                    value="{{(!$is_add) ? old('model_code', $vehicle->model_code) : old('model_code')}}"
     />
 
     <x-input-error :messages="$errors->get('model_code')" class="mt-2" />
@@ -104,7 +104,7 @@
                     type="text"
                     name="engine_code"
                     required autocomplete="engine_code" 
-                    value="{{(!$is_add)?$vehicle->engine_code:''}}"
+                    value="{{(!$is_add) ? old('engine_code', $vehicle->engine_code) : old('engine_code')}}"
     />
 
     <x-input-error :messages="$errors->get('engine_code')" class="mt-2" />
@@ -118,7 +118,7 @@
                     type="text"
                     name="engine_displacement"
                     required autocomplete="engine_displacement" 
-                    value="{{(!$is_add)?$vehicle->engine_displacement:''}}"
+                    value="{{(!$is_add) ? old('engine_displacement', $vehicle->engine_diplsacement) : old('engine_displacement')}}"
     />
 
     <x-input-error :messages="$errors->get('engine_displacement')" class="mt-2" />
@@ -132,7 +132,7 @@
                     type="date"
                     name="mot_expires"
                     required autocomplete="mot_expires" 
-                    value="{{(!$is_add)?$vehicle->mot_expires:''}}"
+                    value="{{(!$is_add) ? old('mot_expires', $vehicle->mot_expires) : old('mot_expires')}}"
     />
 
     <x-input-error :messages="$errors->get('mot_expires')" class="mt-2" />
