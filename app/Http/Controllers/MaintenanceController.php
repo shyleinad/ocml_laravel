@@ -40,12 +40,12 @@ class MaintenanceController extends Controller
         DB::transaction(function() use($request) {
             //validate maintenance form fields
             $formFieldsMaintenance=$request->validate([
-                'vehicle_id'=>'required',
-                'mileage'=>['required', 'integer'],
-                'date'=>'required',
-                'work_done'=>'required',
-                'changed_parts'=>'required',
-                'price'=>['required', 'numeric'],
+                'vehicle_id'=>'required|exists:App\Models\Vehicle,id',
+                'mileage'=>'required|integer|max:2999999',
+                'date'=>'required|date',
+                'work_done'=>'required|string|max:256',
+                'changed_parts'=>'required|string|max:1024',
+                'price'=>'required|numeric|max:9999999',
             ]);
 
             //validate docs form fields
