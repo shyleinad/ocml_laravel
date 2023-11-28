@@ -7,6 +7,7 @@ use App\Models\Vehicle;
 use App\Models\Maintenance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class MaintenanceController extends Controller
 {
@@ -70,5 +71,16 @@ class MaintenanceController extends Controller
         
         //redirect
         return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
+    }
+
+    //delete maintenance
+    public function deleteMaintenance(Request $request, Maintenance $maintenance){
+        //protection
+        if($maintenance->vehicle->user_id!=auth()->id()){
+            abort(403, 'Nincs joga ehhez a művelethez!');
+        }
+
+        $maintenance->delete();
+        return back()->with('message', 'Szervízbejegyzés sikeresen törölve.');
     }
 }

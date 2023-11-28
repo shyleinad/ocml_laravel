@@ -15,6 +15,11 @@
             @foreach ($maintenances as $maintenance)
                 <x-card>
                     {{$maintenance->id}}
+                    <form method="POST" action="/delete-maintenance/{{$maintenance->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <x-danger-button onclick="return confirm('Biztosan törölni szeretné a(z) {{$maintenance->vehicle->lic_plate}} {{$maintenance->vehicle->make}} {{$maintenance->vehicle->type}} járműhöz tartozó {{$maintenance->work_done}} {{$maintenance->date}} bejegyzést?')">Törlés</x-danger-button>
+                    </form>
                 </x-card>
             @endforeach
         @endif
