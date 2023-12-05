@@ -12,6 +12,7 @@ class Doc extends Model
     protected $fillable = 
     [
         'maintenance_id',
+        'name',
         'doc_path'
     ];
 

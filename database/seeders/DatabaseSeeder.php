@@ -46,9 +46,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //vehicles seeding
-        \App\Models\Vehicle::factory(10)->create();
+        //\App\Models\Vehicle::factory(10)->create();
 
         //maintenances seeding
-        \App\Models\Maintenance::factory(10)->create();
+        //\App\Models\Maintenance::factory(10)->create();
     }
 }

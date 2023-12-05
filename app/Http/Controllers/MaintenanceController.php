@@ -7,6 +7,7 @@ use App\Models\Vehicle;
 use App\Models\Maintenance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MaintenanceController extends Controller
@@ -85,12 +86,12 @@ class MaintenanceController extends Controller
 
     //update maintenance
     public function updateMaintenance(Request $request, Maintenance $maintenance){
-
         //protection
         if ($maintenance->vehicle->user_id!=auth()->id()){
             abort(403, 'Nincs joga ehhez a művelethez!');
         }
 
+        //transaction
         DB::transaction(function() use($request, $maintenance){
 
             //validate maintenance form fields
@@ -119,6 +120,7 @@ class MaintenanceController extends Controller
             $docs=$request->file('docs'); //getting selected files
             if($request->hasFile('docs')){ //if it has something in it
                 foreach($docs as $doc){ //loop through the files
+                    $formFieldsDoc['name']=$doc->getClientOriginalName(); //adding the original name of the file
                     $formFieldsDoc['doc_path']=$doc->store('docs', 'public'); //store the file and get the path
                     Doc::create($formFieldsDoc); //inserting the file
                     //dd($formFieldDoc['doc_path']);
@@ -128,6 +130,22 @@ class MaintenanceController extends Controller
 
         //redirect
         return back()->with('message', 'Szervízbejegyzés sikeresen módosítva!');
+    }
+
+    //delete doc
+    public function deleteDoc(Doc $doc){
+        //protection
+        if($doc->maintenance->vehicle->user_id!=auth()->id()){
+            abort(403, 'Nincs joga ehhez a művelethez!');
+        }
+
+        //transaction
+        DB::transaction(function() use($doc){
+            $doc->delete(); //delete from db
+            unlink(storage_path('app/public/'.$doc->doc_path)); //delete from storage
+        });
+
+        return back()->with('message', 'Dokumentum sikeresen törölve.');
     }
 
     //delete maintenance

@@ -12,6 +12,14 @@
                 @method('put')
                 @include('maintenance.partials.form-fields')
             </form>
+            @foreach($maintenance->docs as $doc)
+                {{$doc->name}} 
+                <form method="POST" action="/delete-doc/{{$doc->id}}">
+                    @csrf
+                    @method('DELETE')
+                    <x-danger-button onclick="return confirm('Biztosan törölni szeretné a(z) {{$maintenance->work_done}} ({{$maintenance->date}}) bejegyzéshez tartozó {{$doc->name}} dokumentumot?')">Törlés</x-danger-button>
+                </form>
+            @endforeach
         </x-card>
     </div>
 </x-app-layout>

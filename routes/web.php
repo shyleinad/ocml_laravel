@@ -125,6 +125,9 @@ Route::put('/edit-maintenance/{maintenance}', [MaintenanceController::class, 'up
 //Delete maintenance
 Route::delete('/delete-maintenance/{maintenance}', [MaintenanceController::class, 'deleteMaintenance'])->middleware(['auth', 'verified']);
 
+//Delete maintenance doc
+Route::delete('/delete-doc/{doc}', [MaintenanceController::class, 'deleteDoc'])->middleware(['auth', 'verified']);
+
 //Show vehicles view
 Route::get('/vehicles', [VehicleController::class, 'showVehicles'])->middleware(['auth', 'verified'])->name('vehicles');
 
