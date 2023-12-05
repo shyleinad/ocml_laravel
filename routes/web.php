@@ -113,8 +113,14 @@ Route::get('/maintenances', [MaintenanceController::class, 'showMaintenances'])-
 //Show maintenance add view
 Route::get('/add-maintenance-form', [MaintenanceController::class, 'showMaintenanceAdd'])->middleware(['auth', 'verified']);
 
+//Show maintenance edit view
+Route::get('/edit-maintenance-form/{maintenance}', [MaintenanceController::class, 'showMaintenanceEdit'])->middleware(['auth', 'verified']);
+
 //Insert maintenance
 Route::post('/insert-maintenance', [MaintenanceController::class, 'insertMaintenance'])->middleware(['auth', 'verified']);
+
+//Update maintenance
+Route::put('/edit-maintenance/{maintenance}', [MaintenanceController::class, 'updateMaintenance'])->middleware(['auth', 'verified']);
 
 //Delete maintenance
 Route::delete('/delete-maintenance/{maintenance}', [MaintenanceController::class, 'deleteMaintenance'])->middleware(['auth', 'verified']);

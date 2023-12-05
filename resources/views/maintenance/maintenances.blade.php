@@ -15,6 +15,7 @@
             @foreach ($maintenances as $maintenance)
                 <x-card>
                     {{$maintenance->id}}
+                    <a href="/edit-maintenance-form/{{$maintenance->id}}"><x-secondary-button>Módosítás</x-secondary-button></a></td>
                     <form method="POST" action="/delete-maintenance/{{$maintenance->id}}">
                         @csrf
                         @method('DELETE')

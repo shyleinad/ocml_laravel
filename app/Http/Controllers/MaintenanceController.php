@@ -35,6 +35,16 @@ class MaintenanceController extends Controller
         ]);
     }
 
+    //show maintenance edit form
+    public function showMaintenanceEdit(Maintenance $maintenance){
+        $is_add=false; //so we know we would like to edit and not add
+        return view('maintenance.edit', [
+            'is_add'=>$is_add,
+            'maintenance'=>$maintenance,
+            'vehicles'=>request()->user()->vehicles()->get()
+        ]);
+    }
+
     //insert maintenance
     public function insertMaintenance(Request $request){
 
@@ -71,6 +81,53 @@ class MaintenanceController extends Controller
         
         //redirect
         return back()->with('message', 'Szervízbejegyzés sikeresen hozzáadva!');
+    }
+
+    //update maintenance
+    public function updateMaintenance(Request $request, Maintenance $maintenance){
+
+        //protection
+        if ($maintenance->vehicle->user_id!=auth()->id()){
+            abort(403, 'Nincs joga ehhez a művelethez!');
+        }
+
+        DB::transaction(function() use($request, $maintenance){
+
+            //validate maintenance form fields
+            $formFieldsMaintenance=$request->validate([
+                'vehicle_id'=>'required|exists:App\Models\Vehicle,id',
+                'mileage'=>'required|integer|max:2999999',
+                'date'=>'required|date',
+                'work_done'=>'required|string|max:256',
+                'changed_parts'=>'required|string|max:1024',
+                'price'=>'required|numeric|max:9999999',
+            ]);
+
+            //validate docs form fields
+            $formFieldsDoc=$request->validate([
+            //'docs'=>'required',
+                'docs.*'=>'mimes:pdf,jpg,jpeg|max:20480'
+            ]);
+
+            //add maintenance id to doc
+            $formFieldsDoc['maintenance_id']=$maintenance->id;
+
+            //update
+            $maintenance->update($formFieldsMaintenance);
+
+            //store docs and insert docs
+            $docs=$request->file('docs'); //getting selected files
+            if($request->hasFile('docs')){ //if it has something in it
+                foreach($docs as $doc){ //loop through the files
+                    $formFieldsDoc['doc_path']=$doc->store('docs', 'public'); //store the file and get the path
+                    Doc::create($formFieldsDoc); //inserting the file
+                    //dd($formFieldDoc['doc_path']);
+                }
+            }
+        });
+
+        //redirect
+        return back()->with('message', 'Szervízbejegyzés sikeresen módosítva!');
     }
 
     //delete maintenance
