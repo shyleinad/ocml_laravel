@@ -154,7 +154,20 @@ class MaintenanceController extends Controller
             abort(403, 'Nincs joga ehhez a művelethez!');
         }
 
-        $maintenance->delete();
+        //getting the docs to delete
+        $docs=$maintenance->docs;
+
+        //transaction
+        DB::transaction(function() use($request, $maintenance, $docs){
+            $maintenance->delete(); //delete maintenance
+
+            //looping thru docs
+            foreach($docs as $doc){
+                unlink(storage_path('app/public/'.$doc->doc_path)); //delete from storage
+            }
+        });
+
+        //return/redirect
         return back()->with('message', 'Szervízbejegyzés sikeresen törölve.');
     }
 }
