@@ -73,9 +73,9 @@ class MaintenanceController extends Controller
             $docs=$request->file('docs'); //getting selected files
             if($request->hasFile('docs')){ //if it has something in it
                 foreach($docs as $doc){ //loop through the files
+                    $formFieldsDoc['name']=$doc->getClientOriginalName(); //adding the original name of the file
                     $formFieldsDoc['doc_path']=$doc->store('docs', 'public'); //store the file and get the path
                     Doc::create($formFieldsDoc); //inserting the file
-                    //dd($formFieldDoc['doc_path']);
                 }
             }
         });
@@ -123,7 +123,6 @@ class MaintenanceController extends Controller
                     $formFieldsDoc['name']=$doc->getClientOriginalName(); //adding the original name of the file
                     $formFieldsDoc['doc_path']=$doc->store('docs', 'public'); //store the file and get the path
                     Doc::create($formFieldsDoc); //inserting the file
-                    //dd($formFieldDoc['doc_path']);
                 }
             }
         });
