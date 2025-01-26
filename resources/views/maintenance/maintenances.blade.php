@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-header.header>
         <x-header.header-text>
-            {{ __('Szervizbejegyzések') }}
+            {{ __('Szervizbejegyzéseim') }}
         </x-header.header-text>
         <x-header.add-button :href="__('/add-maintenance-form')">Új szervízbejegyzés</x-header.add-button>
     </x-header.header>
