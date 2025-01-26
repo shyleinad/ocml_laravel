@@ -12,6 +12,24 @@
                 {{ __('Nincsenek szervízbejegyzések!') }}
             </x-card>
         @else
+            <x-table>
+                <x-maintenance.maintenances-table-head/>
+                <x-table-body>
+                    @foreach ($maintenances as $maintenance)
+                        <x-maintenance.maintenances-table-row :maintenance="$maintenance"/>
+                    @endforeach
+                </x-table-body>
+            </x-table>
+        @endif
+    </div>
+
+    {{-- showing with cards, obsolete
+    <div class="py-12">
+        @if (count($maintenances) <= 0)
+            <x-card>
+                {{ __('Nincsenek szervízbejegyzések!') }}
+            </x-card>
+        @else
             @foreach ($maintenances as $maintenance)
                 <x-card>
                     {{$maintenance->id}}
@@ -25,4 +43,5 @@
             @endforeach
         @endif
     </div>
+    --}}
 </x-app-layout>
