@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doc;
-use App\Models\Vehicle;
 use App\Models\Maintenance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +20,21 @@ class MaintenanceController extends Controller
             'maintenances'=>request()->user()->maintenances()->get()
         ]);
 
-        //showing all result (for debugging purposes or something)
+        //showing all result (for debugging purposes)
         /*return view('maintenance.maintenances', [
             'maintenances'=>Maintenance::latest()->paginate(25)
         ]);*/
+    }
+
+    public function showPublicMaintenances(){
+        //instantiate vehicle controller, we need vehicles in order to get maintenances based on vehicle license plate
+        $vehicleController = new VehicleController();
+        $filters = array(
+            request()->query(),
+            'public' => 1);
+        return view('maintenance.public-maintenances', [
+            'maintenances'=>$vehicleController->find($filters)->maintenances()->get()
+        ]);
     }
 
     //show maintenance add form

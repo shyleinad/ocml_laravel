@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Vehicle;
 
 class Maintenance extends Model
 {
@@ -27,5 +28,14 @@ class Maintenance extends Model
     //relationship to docs
     public function docs(){
         return $this->hasMany(Doc::class, 'maintenance_id');
+    }
+
+    //filter
+    public function scopeFilter($query, array $filters){
+        /*
+        if($filters['price'] ?? false){
+            $query->where('price', 'like', '%' . request('price') . '%');
+        }
+        */
     }
 }

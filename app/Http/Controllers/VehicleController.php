@@ -107,4 +107,9 @@ class VehicleController extends Controller
         $vehicle->delete();
         return back()->with('message', 'Jármű sikeresen módosítva!');
     }
+
+    //find single row
+    public function find(array $filter) {
+        return Vehicle::latest()->filter($filter)->first();
+    }
 }

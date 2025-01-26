@@ -35,4 +35,22 @@ class Vehicle extends Model
     public function maintenances(){
         return $this->hasMany(Maintenance::class, 'vehicle_id');
     }
+
+    //filter
+    public function scopeFilter($query, array $filters){     
+        //dd($filters);
+
+        $filterArray = array();
+
+        if ($filters['lic_plate'] ?? false){
+            array_push($filterArray, ['public', 'like', $filters['public']]);
+            dd($filters);
+        }
+        
+        if($filters['lic_plate'] ?? false){
+            //dd($filters);
+            $query->where('lic_plate', 'like', '%' . $filters['lic_plate'] . '%');
+        }
+        
+    }
 }
